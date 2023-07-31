@@ -19,10 +19,10 @@ depends_on = None
 def upgrade() -> None:
     bind = op.get_bind()
 
-    if bind.engine.name == 'mysql':
+    if bind.engine.name == 'sqlite':
         pass  # By default, MySQL is case-insensitive.
 
-    if bind.engine.name == 'sqlite':
+    if bind.engine.name == 'mysql':
         op.drop_index('ix_users_username', table_name='users')
         while True:
             q = bind.execute(
@@ -41,10 +41,10 @@ def upgrade() -> None:
 def downgrade() -> None:
     bind = op.get_bind()
 
-    if bind.engine.name == 'mysql':
+    if bind.engine.name == 'sqlite':
         pass  # By default, MySQL is case-insensitive.
 
-    if bind.engine.name == 'sqlite':
+    if bind.engine.name == 'mysql':
         with op.batch_alter_table('users') as batch_op:
             batch_op.alter_column('username', type_=sa.String(length=34))
         op.drop_index('ix_users_username', table_name='users')
