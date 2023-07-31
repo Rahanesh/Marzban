@@ -1,6 +1,6 @@
 services:
   marzban:
-    image: rahanesh/marzban:dev
+    image: gozargah/marzban:dev
     restart: always
     env_file: .env
     network_mode: host
@@ -30,4 +30,4 @@ services:
       PMA_HOST: 127.0.0.1
       APACHE_PORT: 8010
     depends_on:
-      - mysql
+      - mysq
