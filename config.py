@@ -4,8 +4,8 @@ from dotenv import load_dotenv
 load_dotenv()
 
 
-SQLALCHEMY_DATABASE_URL = config("SQLALCHEMY_DATABASE_URL", default="sqlite:///db.sqlite3")
-
+SQLALCHEMY_DATABASE_URL = config("SQLALCHEMY_DATABASE_URL", default="mysql+pymysql://root:DB_PASSWORD@127.0.0.1/marzban")
+MYSQL_ROOT_PASSWORD = config ("MYSQL_ROOT_PASSWORD", default="Abc*12345") 
 
 UVICORN_HOST = config("UVICORN_HOST", default="0.0.0.0")
 UVICORN_PORT = config("UVICORN_PORT", cast=int, default=8000)
